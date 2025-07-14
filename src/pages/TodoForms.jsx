@@ -1,38 +1,54 @@
-import React from "react";
-import { useState } from "react";
-import axios from 'axios'
+// TodoForms.js
+import React, { useState } from "react";
+import axios from 'axios';
+import './style.css';
 
+function TodoForms() {
+    const [title, SetTitle] = useState('');
+    const [description, setDescription] = useState('');
 
-function TodoForms(){
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    const [title,SetTitle]=useState('')
-    const [desciption,setDescription] =useState('')
+        const formdata = new FormData();
+        formdata.append('title', title);
+        formdata.append('description', description);
 
-    const handeSubmit = async(e)=>{
-        e.preventDefault()
+        try {
+            await axios.post('http://127.0.0.1:8000/api/todos/', formdata, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+            alert('Data saved!');
+            SetTitle('');
+            setDescription('');
+        } catch (error) {
+            console.error('Error saving data:', error);
+            alert('Error saving data!');
+        }
+    };
 
-        const formdata = new FormData()
-        formdata.append('title',title)
-        formdata.append('description',desciption)
-
-        await axios.post('http://127.0.0.1:8000/api/todos/',formdata,{
-            headers:{'Content-Type':'multipart/form-data'}
-        })
-
-        alert('data saved!')
-        SetTitle('')
-        setDescription('')
-    }
-    return(
-        <>
-        <form onSubmit={handeSubmit}>
-            <input type="text" value={title} placeholder="title" onChange={(e)=>SetTitle(e.target.value)} required /> <br />
-            <input type="text" value={desciption} placeholder="description" onChange={(e)=>setDescription(e.target.value)} required/>
-            <button type="submit">add click</button>
-        </form>
-        </>
-    )
+    return (
+        <div className="form-container sidebar-form">
+            <h2>Add New Todo</h2>
+            <form className="form" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={title}
+                    placeholder="Title"
+                    onChange={(e) => SetTitle(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
+                    value={description}
+                    placeholder="Description"
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
+                <button type="submit">Add Todo</button>
+            </form>
+        </div>
+    );
 }
 
 export default TodoForms;
-
