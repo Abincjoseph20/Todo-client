@@ -11,7 +11,7 @@ function TodoList() {
 
     const FetchData = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:8000/api/todos/');
+            const res = await axios.get('https://todo-server-smxo.onrender.com/api/todos/');
             setList(res.data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -24,7 +24,7 @@ function TodoList() {
 
     const HandleDelete = async (id) => {
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/todos/${id}/`);
+            await axios.delete(`https://todo-server-smxo.onrender.com/api/todos/${id}/`);
             FetchData();
         } catch (error) {
             console.error('Error deleting todo:', error);
@@ -43,7 +43,7 @@ function TodoList() {
             formdata.append('title', title);
             formdata.append('description', description);
             
-            await axios.patch(`http://127.0.0.1:8000/api/todos/${editId}/`, formdata, {
+            await axios.patch(`https://todo-server-smxo.onrender.com/api/todos/${editId}/`, formdata, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             alert('Updated successfully');
