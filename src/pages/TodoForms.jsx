@@ -15,7 +15,7 @@ function TodoForms() {
         formdata.append('description', description);
 
         try {
-            await axios.post('http://127.0.0.1:8000/api/todos/', formdata, {
+            await axios.post('https://todo-server-smxo.onrender.com/api/todos/', formdata, { 
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             alert('Data saved!');
@@ -26,7 +26,7 @@ function TodoForms() {
             alert('Error saving data!');
         }
     };
-// hjkl;
+
     return (
         <div className="form-container sidebar-form">
             <h2>Add New Todo</h2>
