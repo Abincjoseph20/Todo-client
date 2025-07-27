@@ -201,6 +201,7 @@ button:hover {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    min-width: 500px;
 }
 .add-item-container {
     display: flex;
