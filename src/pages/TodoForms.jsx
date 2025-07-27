@@ -18,7 +18,7 @@ function TodoForms() {
             await axios.post('https://todo-server-smxo.onrender.com/api/todos/', formdata, { 
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            alert('Data saved!');
+            alert('Task added!');
             SetTitle('');
             setDescription('');
         } catch (error) {
