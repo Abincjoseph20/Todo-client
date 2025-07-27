@@ -21,8 +21,8 @@ function TodoForms() {
             await axios.post('https://todo-server-smxo.onrender.com/api/todos/', formdata, { 
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            alert('Task added');
-            navigate('/list');
+            // alert('Task added');
+            navigate('/list'); // after adding Task the redirecting is goin to the list page
             SetTitle('');
             setDescription('');
         } catch (error) {
