@@ -1,11 +1,14 @@
 // TodoForms.js
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './style.css';
 
 function TodoForms() {
     const [title, SetTitle] = useState('');
     const [description, setDescription] = useState('');
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,7 +21,8 @@ function TodoForms() {
             await axios.post('https://todo-server-smxo.onrender.com/api/todos/', formdata, { 
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            alert('Task added!');
+            alert('Data saved!');
+            
             SetTitle('');
             setDescription('');
         } catch (error) {
