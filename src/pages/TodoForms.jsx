@@ -22,7 +22,7 @@ function TodoForms() {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             // alert('Task added');
-            navigate('/list'); // after adding Task the redirecting is goin to the list page
+            navigate('/list'); // after adding Task the redirection is going to the list page
             SetTitle('');
             setDescription('');
         } catch (error) {
