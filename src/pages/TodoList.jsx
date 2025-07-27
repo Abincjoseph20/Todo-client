@@ -89,7 +89,7 @@ function TodoList() {
                     <p>{list.description}</p>
                     <div className="todo-actions">
                         <button onClick={() => HandleEdit(list)}>🖋️</button>
-                        <button onClick={() => HandleDelete(list.id)}>x</button>
+                        <button onClick={() => HandleDelete(list.id)}>x</button> 
                     </div>
                 </div>
             ))}
